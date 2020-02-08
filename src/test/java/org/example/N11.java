@@ -61,11 +61,11 @@ public class N11 {
             //Kullanıcı Adı Şifre Girilir ve Giriş Yapar
             driver.findElement(By.name("email")).sendKeys("selenium.deneme@gmail.com");
             driver.findElement(By.name("password")).sendKeys("testinium02");
-            Thread.sleep(1000);
-            Assert.assertTrue(!By.className("btnSignIn").getClass().equals(""));
-            //Login işlemi kontrol edilir.
-            System.out.println("Kullanıcı Girişi Başarılı ...");
             driver.findElement(By.id("loginButton")).click();
+            Thread.sleep(1000);
+            //Login işlemi kontrol edilir.
+            Assert.assertTrue(!By.className("btnSignIn").getClass().equals(""));
+            System.out.println("Kullanıcı Girişi Başarılı ...");
             Thread.sleep(1000);
             //Arama kutucuğuna bilgisayar kelimesi girilir ve arama yapılır
             driver.findElement(By.id("searchData")).sendKeys("bilgisayar");
@@ -93,6 +93,10 @@ public class N11 {
             //Ürün Sepetten Silinir
             driver.findElement(By.xpath("//*[@class='prodAction']/span[1]")).click();
             Thread.sleep(1000);
+            //Sepetin boş olduğu kontrol edilir
+            Assert.assertTrue(!By.className("btnHolder").getClass().equals(""));
+            System.out.println("Sepet Boş...");
+
 
         } catch (InterruptedException e) {
             e.printStackTrace();
