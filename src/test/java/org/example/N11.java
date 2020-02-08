@@ -46,32 +46,47 @@ public class N11 {
         Integer i=r.nextInt(27);
         i+=1;
         try {
-
+            //N11 Anasayfası Açılır
             driver.get(homePage);
             Thread.sleep(1000);
+            //Giriş Yap Butonuna basar
             driver.findElement(By.className("btnSignIn")).click();
             Thread.sleep(1000);
-            driver.findElement(By.name("email")).sendKeys("m_ozer_02@hotmail.com");
-            driver.findElement(By.name("password")).sendKeys("muhammed02300");
+            //Kullanıcı Adı Şifre Girilir ve Giriş Yapar
+            driver.findElement(By.name("email")).sendKeys("selenium.deneme@gmail.com");
+            driver.findElement(By.name("password")).sendKeys("testinium02");
             Thread.sleep(1000);
             driver.findElement(By.id("loginButton")).click();
             Thread.sleep(1000);
+            //Arama kutucuğuna bilgisayar kelimesi girilir ve arama yapılır
             driver.findElement(By.id("searchData")).sendKeys("bilgisayar");
             Thread.sleep(1000);
             driver.findElement(By.className("searchBtn")).click();
             Thread.sleep(1000);
+            //Arama sonuçları sayfasından 2.sayfa açılır
             driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[4]/a[2]")).click();
             Thread.sleep(1000);
+            //Sonuca göre sergilenen ürünlerden rastgele bir ürün seçilir
             driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/section[1]/div[2]/ul[1]/li["+i+"]/div[1]/div[1]/a[1]")).click();
             Thread.sleep(1000);
-
-
-
+            //Seçilen Ürün Sepete Eklenir
+            driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[2]/div[3]/div[3]/a[2]")).click();
+            Thread.sleep(1000);
+            //Sepet Açılır
+            driver.findElement(By.className("myBasket")).click();
+            Thread.sleep(1000);
+            //Adet arttırılarak ürün adedi 2 olur
+            driver.findElement(By.xpath("//*[@class='spinnerFieldContainer']/span[1]")).click();
+            Thread.sleep(1000);
+            //Ürün Sepetten Silinir
+            driver.findElement(By.xpath("//*[@class='prodAction']/span[1]")).click();
+            Thread.sleep(1000);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
 
 
     @After
