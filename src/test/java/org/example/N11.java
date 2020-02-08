@@ -1,6 +1,7 @@
 package org.example;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -46,16 +47,24 @@ public class N11 {
         Integer i=r.nextInt(27);
         i+=1;
         try {
-            //N11 Anasayfası Açılır
+            //www.n11.com sitesi açılır.
             driver.get(homePage);
             Thread.sleep(1000);
+            //Ana sayfanın açıldığı kontrol edilir
+            driver.getTitle().contains("https://www.n11.com/");
+            System.out.println("Anasayfa Ekranı Gösterimde...");
             //Giriş Yap Butonuna basar
             driver.findElement(By.className("btnSignIn")).click();
             Thread.sleep(1000);
+            driver.getTitle().contains("https://www.n11.com/giris-yap");
+            System.out.println("Giriş Yap Ekranı Gösterimde...");
             //Kullanıcı Adı Şifre Girilir ve Giriş Yapar
             driver.findElement(By.name("email")).sendKeys("selenium.deneme@gmail.com");
             driver.findElement(By.name("password")).sendKeys("testinium02");
             Thread.sleep(1000);
+            Assert.assertTrue(!By.className("btnSignIn").getClass().equals(""));
+            //Login işlemi kontrol edilir.
+            System.out.println("Kullanıcı Girişi Başarılı ...");
             driver.findElement(By.id("loginButton")).click();
             Thread.sleep(1000);
             //Arama kutucuğuna bilgisayar kelimesi girilir ve arama yapılır
@@ -66,6 +75,9 @@ public class N11 {
             //Arama sonuçları sayfasından 2.sayfa açılır
             driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[4]/a[2]")).click();
             Thread.sleep(1000);
+            //2.sayfanın açıldığı kontrol edilir
+            driver.getTitle().contains("https://www.n11.com/arama?q=bilgisayar&pg=2");
+            System.out.println("2 Sayfa Ekranı Gösterimde...");
             //Sonuca göre sergilenen ürünlerden rastgele bir ürün seçilir
             driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/section[1]/div[2]/ul[1]/li["+i+"]/div[1]/div[1]/a[1]")).click();
             Thread.sleep(1000);
