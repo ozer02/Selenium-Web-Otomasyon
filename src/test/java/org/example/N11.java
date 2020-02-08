@@ -22,7 +22,7 @@ public class N11 {
     public void setUp() {
 
         try {
-
+            //
             DesiredCapabilities capabilities = DesiredCapabilities.chrome();
             System.setProperty("webdriver.chrome.driver", "C:\\Users\\ÖZER\\IdeaProjects\\Deneme\\Driver\\chromedriver.exe");
             driver = new ChromeDriver(capabilities);
